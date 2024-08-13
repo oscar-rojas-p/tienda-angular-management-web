@@ -10,3 +10,18 @@ th , td{
 th{
     color:white
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+input{
+    color:black;
+}
+
+select{
+    color:black;
+}
+
+textarea{
+    color:black;
+    padding:10px
+}

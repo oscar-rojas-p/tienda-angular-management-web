@@ -2,7 +2,10 @@
 
 <div class="w-full h-full relative flex flex-col gap-2">
     <div class="flex items-center justify-end">
-        <button class="hover:shadow-sm hover:shadow-black px-4 py-2 rounded bg-blue-600 text-white text-sm">Agregar pedido</button>
+        <button 
+            class="hover:shadow-sm hover:shadow-black px-4 py-2 rounded bg-blue-600 text-white text-sm"
+            (click)="openModalRegistrarEditar('Registrar producto')"
+        >Agregar pedido</button>
     </div>
     <div class="flex-grow overflow-auto">
         <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -22,12 +25,50 @@
                     <td>test</td>
                     <td>test</td>
                     <td>test</td>
-                    <td><button class="text-white w-[30px] h-[30px] rounded bg-blue-600"><i class="fa fa-pen" aria-hidden="true"></i></button></td>
-                    <td><button class="text-white w-[30px] h-[30px] rounded bg-red-600"><i class="fa fa-trash" aria-hidden="true"></i></button></td>
+                    <td>
+                        <button 
+                            (click)="openModalRegistrarEditar('Editar producto')" 
+                            class="text-white w-[30px] h-[30px] rounded bg-blue-600"
+                        >
+                            <i class="fa fa-pen" aria-hidden="true"></i>
+                        </button>
+                    </td>
+                    <td>
+                        <button 
+                            (click)="openModalEliminar()"
+                            class="text-white w-[30px] h-[30px] rounded bg-red-600"
+                        >
+                            <i class="fa fa-trash" aria-hidden="true"></i>
+                        </button>
+                    </td>
                 </tr>
             </tbody>
         </table>
     </div>
 </div>
 
-<app-modal></app-modal>
+<!-- MODAL REGISTRAR/EDITAR -->
+<app-modal 
+    [isVisible]="isOpenModalRegistrarEditar" 
+    [title]="tituloModalRegistrarEditar"
+    (closeEvent)="closeModalRegistrarEditar()"
+>
+    <div class="grid grid-cols-3 gap-2">
+        <span>Cliente</span>
+        <select name="" id="" class="col-span-2">
+            <option value="">Seleccione</option>
+        </select>
+        <span>Productos</span>
+        <select name="" id="" class="col-span-2"></select>
+    </div>
+</app-modal>
+
+<app-modal
+    [isVisible]="isOpenModalEliminar"
+    title="Eliminar pedido"
+    (closeEvent)="closeModalEliminar()"
+>
+    <div class="flex gap-4 justify-center">
+        <span>Está seguro de eliminar el pedido?</span>
+    </div>
+</app-modal>
