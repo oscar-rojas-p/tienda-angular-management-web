@@ -2,7 +2,7 @@
 
 <div class="w-full h-full relative flex flex-col gap-2">
     <div class="flex items-center justify-end">
-        <button class="hover:shadow-sm hover:shadow-black px-4 py-2 rounded bg-blue-600 text-white text-sm">Agregar producto</button>
+        <button (click)="openModalRegistro('Registrar producto')" class="hover:shadow-sm hover:shadow-black px-4 py-2 rounded bg-blue-600 text-white text-sm">Agregar producto</button>
     </div>
     <div class="flex-grow overflow-auto">
         <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -10,6 +10,7 @@
                 <tr>
                     <th>NOMBRE PRODUCTO</th>
                     <th>PRECIO</th>
+                    <th>STOCK</th>
                     <th class="w-10">EDITAR</th>
                     <th class="w-10">ELIMINAR</th>
                 </tr>
@@ -18,10 +19,38 @@
                 <tr *ngFor="let item of items" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                     <td>test</td>
                     <td>test</td>
-                    <td><button class="text-white w-[30px] h-[30px] rounded bg-blue-600"><i class="fa fa-pen" aria-hidden="true"></i></button></td>
-                    <td><button class="text-white w-[30px] h-[30px] rounded bg-red-600"><i class="fa fa-trash" aria-hidden="true"></i></button></td>
+                    <td>test</td>
+                    <td><button (click)="openModalRegistro('Editar producto')" class="text-white w-[30px] h-[30px] rounded bg-blue-600"><i class="fa fa-pen" aria-hidden="true"></i></button></td>
+                    <td><button (click)="openModalEliminar()" class="text-white w-[30px] h-[30px] rounded bg-red-600"><i class="fa fa-trash" aria-hidden="true"></i></button></td>
                 </tr>
             </tbody>
         </table>
     </div>
 </div>
+
+<!-- MODAL REGISTRO -->
+<app-modal
+    [isVisible]="isOpenModalRegistro"
+    [title]="tituloModalRegistro"
+    (closeEvent)="closeModalRegistro()"
+>
+    <div class="grid grid-cols-2 gap-4">
+        <span>Nombre producto</span>
+        <input type="text">
+        <span>Precio</span>
+        <input type="number" min="0">
+        <span>Stock</span>
+        <input type="number" min="0">
+    </div>
+</app-modal>
+
+<app-modal
+    [isVisible]="isOpenModalEliminar"
+    title="Eliminar producto"
+    buttonAccept="Aceptar"
+    (closeEvent)="closeModalEliminar()"
+>
+    <div class="text-center">
+        <span>Está seguro de eliminar el registro?</span>
+    </div>
+</app-modal>

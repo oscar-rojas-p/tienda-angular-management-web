@@ -15,7 +15,7 @@
                 <tr *ngFor="let item of items" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                     <td>test</td>
                     <td><button (click)="openModalRegistro('Editar cliente')" class="text-white w-[30px] h-[30px] rounded bg-blue-600"><i class="fa fa-pen" aria-hidden="true"></i></button></td>
-                    <td><button class="text-white w-[30px] h-[30px] rounded bg-red-600"><i class="fa fa-trash" aria-hidden="true"></i></button></td>
+                    <td><button (click)="openModalEliminar()" class="text-white w-[30px] h-[30px] rounded bg-red-600"><i class="fa fa-trash" aria-hidden="true"></i></button></td>
                 </tr>
             </tbody>
         </table>
@@ -29,7 +29,18 @@
     (closeEvent)="closeModalRegistro()"
 >
     <div class="flex gap-4">
-        <span>Nombre cliente</span>
+        <span class="">Nombre cliente</span>
         <input type="text">
+    </div>
+</app-modal>
+
+<app-modal
+    [isVisible]="isOpenEliminar"
+    title="Eliminar registro"
+    buttonAccept="Aceptar"
+    (closeEvent)="closeModalEliminar()"
+>
+    <div class="text-center">
+        <span>Está seguro de eliminar el registro?</span>
     </div>
 </app-modal>

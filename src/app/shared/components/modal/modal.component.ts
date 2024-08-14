@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, input, Input, Output } from '@angular/core';
 
 @Component({
 	selector: 'app-modal',
@@ -14,6 +14,8 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class ModalComponent {
 	@Input() isVisible: boolean = false;
 	@Input() title: string = '';
+	@Input() buttonAccept: string = 'Guardar';
+	@Input() buttonDecline: string = 'Cancelar';
 	@Output() closeEvent: EventEmitter<void> = new EventEmitter();
 
 	close(){
