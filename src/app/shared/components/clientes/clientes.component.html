@@ -7,13 +7,17 @@
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 sticky top-0">
                 <tr>
                     <th>NOMBRE CLIENTE</th>
+                    <th>TELEFONO</th>
+                    <th>CORREO</th>
                     <th class="w-10">EDITAR</th>
                     <th class="w-10">ELIMINAR</th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let item of items" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                    <td>test</td>
+                    <td>{{item.nombre}}</td>
+                    <td>{{item.telefono}}</td>
+                    <td>{{item.email}}</td>
                     <td><button (click)="openModalRegistro('Editar cliente')" class="text-white w-[30px] h-[30px] rounded bg-blue-600"><i class="fa fa-pen" aria-hidden="true"></i></button></td>
                     <td><button (click)="openModalEliminar()" class="text-white w-[30px] h-[30px] rounded bg-red-600"><i class="fa fa-trash" aria-hidden="true"></i></button></td>
                 </tr>
@@ -28,8 +32,12 @@
     [title]="tituloModalRegistro"
     (closeEvent)="closeModalRegistro()"
 >
-    <div class="flex gap-4">
-        <span class="">Nombre cliente</span>
+    <div class="grid grid-cols-2 gap-4">
+        <span class="">Nombre</span>
+        <input type="text">
+        <span>Telefono</span>
+        <input type="number">
+        <span>Correo</span>
         <input type="text">
     </div>
 </app-modal>
