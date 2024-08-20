@@ -16,11 +16,14 @@
                 </tr>
             </thead>
             <tbody>
+                <tr *ngIf="items.length === 0" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                    <td colspan="5" class="text-center">No hay datos disponibles</td>
+                </tr>
                 <tr *ngFor="let item of items" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                    <td>test</td>
-                    <td>test</td>
-                    <td>test</td>
-                    <td><button (click)="openModalRegistro('Editar producto')" class="text-white w-[30px] h-[30px] rounded bg-blue-600"><i class="fa fa-pen" aria-hidden="true"></i></button></td>
+                    <td>{{item.nombre}}</td>
+                    <td>S/. {{item.precio}}</td>
+                    <td>{{item.stock}} unidades</td>
+                    <td><button (click)="openModalRegistro('Editar producto',item)" class="text-white w-[30px] h-[30px] rounded bg-blue-600"><i class="fa fa-pen" aria-hidden="true"></i></button></td>
                     <td><button (click)="openModalEliminar()" class="text-white w-[30px] h-[30px] rounded bg-red-600"><i class="fa fa-trash" aria-hidden="true"></i></button></td>
                 </tr>
             </tbody>
@@ -33,14 +36,15 @@
     [isVisible]="isOpenModalRegistro"
     [title]="tituloModalRegistro"
     (closeEvent)="closeModalRegistro()"
+    (registerEvent)="registrarProducto()"
 >
     <div class="grid grid-cols-2 gap-4">
         <span>Nombre producto</span>
-        <input type="text">
+        <input [(ngModel)]="producto.nombre" type="text">
         <span>Precio</span>
-        <input type="number" min="0">
+        <input [(ngModel)]="producto.precio" type="number" min="0">
         <span>Stock</span>
-        <input type="number" min="0">
+        <input [(ngModel)]="producto.stock" type="number" min="0">
     </div>
 </app-modal>
 

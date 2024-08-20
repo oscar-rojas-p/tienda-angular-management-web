@@ -17,9 +17,14 @@ export class ModalComponent {
 	@Input() buttonAccept: string = 'Guardar';
 	@Input() buttonDecline: string = 'Cancelar';
 	@Output() closeEvent: EventEmitter<void> = new EventEmitter();
+	@Output() registerEvent: EventEmitter<void> = new EventEmitter();
 
 	close(){
 		this.closeEvent.emit();
+	}
+
+	funcionGuardar(){
+		this.registerEvent.emit();
 	}
 
 }
