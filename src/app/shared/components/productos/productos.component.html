@@ -24,7 +24,7 @@
                     <td>S/. {{item.precio}}</td>
                     <td>{{item.stock}} unidades</td>
                     <td><button (click)="openModalRegistro('Editar producto',item)" class="text-white w-[30px] h-[30px] rounded bg-blue-600"><i class="fa fa-pen" aria-hidden="true"></i></button></td>
-                    <td><button (click)="openModalEliminar()" class="text-white w-[30px] h-[30px] rounded bg-red-600"><i class="fa fa-trash" aria-hidden="true"></i></button></td>
+                    <td><button (click)="openModalEliminar(item)" class="text-white w-[30px] h-[30px] rounded bg-red-600"><i class="fa fa-trash" aria-hidden="true"></i></button></td>
                 </tr>
             </tbody>
         </table>
@@ -52,6 +52,7 @@
     [isVisible]="isOpenModalEliminar"
     title="Eliminar producto"
     buttonAccept="Aceptar"
+    (registerEvent)="eliminarProductos()"
     (closeEvent)="closeModalEliminar()"
 >
     <div class="text-center">

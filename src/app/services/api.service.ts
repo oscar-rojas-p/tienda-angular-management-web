@@ -21,6 +21,9 @@ export class ApiService {
   updateCliente(data: any): Observable<any> {
     return this.http.put(`${this.urlApi}/clientes/${data.id}`, data);
   }
+  deleteCliente(data: any): Observable<any> {
+    return this.http.delete(`${this.urlApi}/clientes/${data.id}`, data);
+  }
 
 
   // PRODUCTOS
@@ -32,6 +35,24 @@ export class ApiService {
   }
   updateProducto(data: any): Observable<any> {
     return this.http.put(`${this.urlApi}/productos/${data.id}`, data);
+  }
+  deleteProducto(data: any): Observable<any> {
+    return this.http.delete(`${this.urlApi}/productos/${data.id}`, data);
+  }
+
+
+  // PEDIDOS
+  getPedidos(): Observable<any> {
+    return this.http.get<any>(`${this.urlApi}/pedidos`);
+  }
+  createPedido(data: any): Observable<any> {
+    return this.http.post(`${this.urlApi}/pedidos`, data);
+  }
+  updatePedido(data: any): Observable<any> {
+    return this.http.put(`${this.urlApi}/pedidos/${data.id}`, data);
+  }
+  deletePedido(data: any): Observable<any> {
+    return this.http.delete(`${this.urlApi}/pedidos/${data.id}`, data);
   }
 
 }

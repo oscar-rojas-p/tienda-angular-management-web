@@ -58,7 +58,8 @@ export default class ProductosComponent {
     this.isOpenModalRegistro = false;
   }
 
-  openModalEliminar(){
+  openModalEliminar(data: Producto){
+    this.producto = data
     this.isOpenModalEliminar = true;
   }
   closeModalEliminar(){
@@ -98,6 +99,19 @@ export default class ProductosComponent {
         }
       )
     }
+  }
+
+  eliminarProductos(){
+    this.apiService.deleteProducto(this.producto).subscribe(
+      (data) => {
+        this.Toast.success("Eliminado correctamente")
+        this.closeModalEliminar()
+        this.listarProductos()
+      },
+      (error) => {
+        this.Toast.error(error)
+      }
+    )
   }
 }
 

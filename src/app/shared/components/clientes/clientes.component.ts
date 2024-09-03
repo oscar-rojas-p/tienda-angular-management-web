@@ -46,7 +46,8 @@ export default class ClientesComponent {
     this.isOpenRegistro = false;
   }
 
-  openModalEliminar(){
+  openModalEliminar(cliente:Cliente){
+    this.cliente = {...cliente}
     this.isOpenEliminar = true;
   }
   closeModalEliminar(){
@@ -86,6 +87,20 @@ export default class ClientesComponent {
         }
       )
     }
+  }
+
+  eliminarCliente(){
+    console.log("cliente -> ",this.cliente)
+    this.apiService.deleteCliente(this.cliente).subscribe(
+      (data) => {
+        this.Toast.success("Eliminado correctamente")
+        this.closeModalEliminar()
+        this.listarClientes()
+      },
+      (error) => {
+        this.Toast.error(error)
+      }
+    )
   }
 
 
